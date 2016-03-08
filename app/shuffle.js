@@ -12,8 +12,8 @@ import thunk from 'redux-thunk';
 import * as brewActions from './actions/brewActions';
 import * as recipeActions from './actions/recipeActions';
 import Welcome from './views/welcome';
-import Create from './views/create';
-import Game from './views/game';
+import CreateView from './views/create';
+import GameView from './views/game';
 import ReactNativeRouter, { Route, Schema, Animations, TabBar } from 'react-native-router-flux';
 const Router = connect()(ReactNativeRouter.Router);
 
@@ -29,8 +29,8 @@ class Shuffle extends Component {
         <Schema name="modal" sceneConfig={Navigator.SceneConfigs.FloatFromBottom}/>
         <Schema name="default" sceneConfig={Navigator.SceneConfigs.FloatFromRight}/>
         <Route name="welcome" component={Welcome} initial={true} wrapRouter={true} title="Shuffle"/>
-        <Route name="game" component={Game} title="Game"/>
-        <Route name="create" component={Create} title="Create Game"/>
+        <Route name="join" component={GameView} title="Game"/>
+        <Route name="create" component={CreateView} title="Create Game"/>
       </Router>  
     );
   }
@@ -40,7 +40,6 @@ export default connect(state => ({
     state: state
   }),
   (dispatch) => ({
-    brewActions: bindActionCreators(brewActions, dispatch),
-    recipeActions: bindActionCreators(recipeActions, dispatch)
+    shuffleActions: bindActionCreators(shuffleActions, dispatch)
   })
 )(Shuffle);

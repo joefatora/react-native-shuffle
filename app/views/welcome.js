@@ -21,11 +21,11 @@ module.exports = class WelcomeView extends Component {
                 <Text style={styles.welcome}>
                     Welcome, Joe!
                 </Text>
-                <Button onPress={Actions.brew} textStyle={{fontSize: 18}}>
+                <Button onPress={Actions.create} textStyle={{fontSize: 18}}>
                   Start Game
                 </Button>
 
-                <Button onPress={Actions.recipes} textStyle={{fontSize: 18}}>
+                <Button onPress={Actions.join} textStyle={{fontSize: 18}}>
                   Join Game
                 </Button>
 

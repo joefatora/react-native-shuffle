@@ -16,7 +16,7 @@ import Button from 'apsl-react-native-button';
 import _ from 'underscore';
 import {Actions} from 'react-native-router-flux';
 
-module.exports = class RecipeView extends Component {
+module.exports = class CreateView extends Component {
   constructor(props) {
     super(props);
     this.targetMassConverter = this.targetMassConverter.bind(this);
@@ -26,32 +26,8 @@ module.exports = class RecipeView extends Component {
       Actions.pop;
   }
 
-  selectBrewMethod() {
-      //this.props.navigator.pop()
-  }
-
-  setFavoriteBrewMethod(value) {
-    console.info(value);
-      //this.props.navigator.pop()
-  }
-
-  optionsRef() {
-    return this.refs['OPTIONLIST'];
-  }
-
-  renderOptions() {
-    return _.map(this.props.state.recipes.brewMethodOptions, function (option) {
-      return <Option key={option.name}>{option.name}</Option>;
-    });
-
-  }
-
-  targetMassConverter() {
-    return 195 + ((this.props.state.beanMassForBrewMethod - 13) * 15)
-  }
-
   render() {
-      const { state, setBeanMassForBrewMethod, selectBrewMethod, setFavoriteBrewMethod, recipes } = this.props;
+      const { state } = this.props;
       console.log(this.props);
       
       return (
@@ -59,33 +35,6 @@ module.exports = class RecipeView extends Component {
               <Button onPress={this.onPressFeed.bind(this)} textStyle={{fontSize: 18}}>
                 Home
               </Button>
-              <Select
-                width={250}
-                ref="SELECT1"
-                optionListRef={this.optionsRef.bind(this)}
-                defaultValue="Select a Brew Method ..."
-                onSelect={this.setFavoriteBrewMethod.bind(this)}>
-                {this.renderOptions()}
-              </Select>
-
-              <Text>Hey</Text>
-
-              <OptionList ref="OPTIONLIST"/>
-
-              <Button onPress={this.selectBrewMethod.bind(this)} textStyle={{fontSize: 18}}>
-                Select Brew Method
-              </Button>
-              <Text style={styles.text}>
-                Bean Weight: {this.props.state.brew.beanMassForBrewMethod + 'grams \n'}
-                Target Mass: {this.props.state.brew.waterMassForBrewMethod + 'grams \n'}
-              </Text>
-              <SliderIOS
-                style={styles.slider}
-                value={this.props.state.brew.beanMassForBrewMethod}
-                minimumValue={13.0}
-                maximumValue={114.0}
-                step={1}
-                onValueChange={(value) => this.setBeanMassForBrewMethod(value)} />
           </View>
       );
   }
@@ -108,4 +57,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('RecipeView', () => RecipeView);
+AppRegistry.registerComponent('CreateView', () => CreateView);

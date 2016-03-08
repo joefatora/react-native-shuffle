@@ -5,11 +5,10 @@ import React, {
   StyleSheet,
   View,
 } from 'react-native';
-import Button from './../components/button';
-import BrewTimer from './../components/brewtimer';
+import Button from 'apsl-react-native-button';
 import {Actions} from 'react-native-router-flux';
 
-module.exports = class BrewView extends Component {
+module.exports = class GameView extends Component {
   constructor(props) {
       super(props);
   }
@@ -22,7 +21,6 @@ module.exports = class BrewView extends Component {
       return (
           <View style={styles.container}>
             <Button clickHandler={Actions.pop} text={"Home"}/>
-            <BrewTimer/>
           </View>
       );
   }
@@ -36,4 +34,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('BrewView', () => BrewView);
+AppRegistry.registerComponent('GameView', () => GameView);
